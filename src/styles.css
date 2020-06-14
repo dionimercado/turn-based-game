@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Fredoka+One&display=swap");
+
 *,
 ::before,
 ::after {
@@ -6,14 +8,50 @@
 body {
   font-family: sans-serif;
   background-color: tomato;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   height: 100vh;
+}
+
+h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 50px;
+  text-align: center;
+  margin: 40px 0;
+  text-transform: uppercase;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+:focus {
+  outline: none;
+}
+
+button {
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.2);
+}
+
+#newGame {
+  background-color: #fff;
+  color: tomato;
+  border: 0;
+  padding: 10px 30px;
+  border-radius: 4px;
+  font-family: "Fredoka One", cursive;
+  font-size: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .app {
   display: flex;
+  margin-top: 60px;
 }
 
 aside {
@@ -21,6 +59,16 @@ aside {
   height: 80vh;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0);
+  text-align: center;
+  padding: 20px 0;
+}
+aside.active {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.2);
+}
+
+aside img {
+  width: 80%;
 }
 
 #map {

@@ -5,6 +5,9 @@ export default class Map {
   }
 
   generate() {
+    const columns = this.tiles / this.tiles;
+    console.log(columns);
+
     let column = 0;
     let row = 1;
 
@@ -15,7 +18,7 @@ export default class Map {
         this.node
       ).innerHTML += `<div data-row="${row}" data-col="${column}"></div>`;
 
-      if (column === 9) {
+      if (column === Math.sqrt(this.tiles)) {
         row++;
         column = 0;
       }
