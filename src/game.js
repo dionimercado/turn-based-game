@@ -9,14 +9,33 @@ export default class Game {
 
     this.currentPlayer = this.detectTurn();
 
-    console.log("current player:", this.currentPlayer.name);
-
     this.players.map(player => {
+      console.log(player);
       document.querySelector(`aside#player${player.id}`).innerHTML = `
         <div>
           ${player.avatar}
           <h4>${player.name}</h4>
         </div>
+        <div class="box">
+          <span>${player.health}</span>
+          <h4>Health</h4>
+        </div>
+        <div class="box">
+          ${player.weapon.image}
+          <span>${player.weapon.damage}</span>
+          <h4>Damage</h4>
+        </div>
+        <div class="box">
+          <img src="images/shield.png" alt="Shield" style="margin-bottom: 10px;opacity: ${
+            player.shield ? 1 : 0.5
+          };" />
+          <h4>${
+            player.shield
+              ? '<span style="color: green">Protected</span>'
+              : "Unprotected"
+          }</h4>
+        </div>
+
       `;
 
       return "";

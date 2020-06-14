@@ -54,26 +54,74 @@ button:hover {
   margin-top: 60px;
 }
 
+.circle {
+  width: 84px;
+  height: 84px;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: auto;
+  border-radius: 50%;
+}
+
 aside {
   width: 160px;
-  height: 80vh;
+  height: 100%;
+  min-height: 636px;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0);
   text-align: center;
-  padding: 20px 0;
 }
 aside.active {
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.2);
 }
 
 aside img {
-  width: 80%;
+  width: 70%;
+  height: auto;
+}
+
+aside .box {
+  background-color: #fff;
+  display: inline-block;
+  color: tomato;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+aside div {
+  width: 75%;
+  margin: 20px auto;
+}
+
+aside div:not(.box) h4 {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+aside .box > span {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  display: block;
+}
+
+aside .box h4 {
+  margin: 0;
+  padding: 5px;
+  background: #000;
+  text-transform: uppercase;
+  font-size: 11px;
+  border-radius: 3px;
 }
 
 #map {
-  height: 80vh;
-  width: 80vh;
+  height: 100%;
+  width: 70vh;
   margin: 0 20px;
   display: grid;
   grid-template-columns: repeat(9, 1fr);
