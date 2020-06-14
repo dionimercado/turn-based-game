@@ -1,0 +1,44 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  background-color: tomato;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+}
+
+aside {
+  width: 160px;
+  height: 80vh;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#map {
+  height: 80vh;
+  width: 80vh;
+  margin: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+}
+
+#map > div {
+  background: rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  border-radius: 7px;
+}
+#map > div:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
