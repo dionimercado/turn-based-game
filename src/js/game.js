@@ -1,7 +1,8 @@
-import { shield } from './assets'
+import { shield, obstacle, weapons } from './assets'
 
 export default class Game {
   constructor(players) {
+    this.gridSquares = document.querySelectorAll('#map>div');
     this.players = players;
     this.currentPlayer = null;
   }
@@ -28,12 +29,27 @@ export default class Game {
     this.reset();
 
     this.currentPlayer = this.detectTurn();
-
+    for (let i = 0; i < 15; i++) {
+      this.placeItem(`<img src="${obstacle}" alt="" />`, 'obstacle');
+    }
+    weapons.map((weapon, i) => this.placeItem(`<img src="${weapon}" alt="" data-damage="${i > 1 ? i * 10 : 10}" />`, 'weapon'));
+    this.players.map(({ avatar }) => this.placeItem(avatar, 'player'))
+    console.log('obstacles:', document.querySelectorAll('.obstacle').length)
+    console.log('players:', document.querySelectorAll('.player').length)
+    console.log('weapons:', document.querySelectorAll('.weapon').length)
   }
 
   reset() {
+
+    // Clean map tiles
+    for (const item of this.gridSquares) {
+      item.innerHTML = '' // remove elements inside a of a tile
+      item.removeAttribute('class'); // remove all classes of a tile
+    }
+
+    // Reset players panels
     this.players.map(player => {
-      console.log(player)
+
       document.querySelector(`#avatar${player.id}`).innerHTML = `
         ${player.avatar}
         <h4>${player.name}</h4>
@@ -54,17 +70,34 @@ export default class Game {
     })
   }
 
+  placeItem = (item, type) => {
+    const randomSquare = Math.floor(Math.random() * this.gridSquares.length);
+    const { row, col } = this.gridSquares[randomSquare].dataset
+    const cList = this.gridSquares[randomSquare].classList
+    if (!cList.contains('player') && !cList.contains('obstacle') && !cList.contains('weapon')) {
+      this.gridSquares[randomSquare].innerHTML = item;
+      this.gridSquares[randomSquare].classList.add(type);
+    } else {
+      this.placeItem(item, type)
+    }
+
+
+
+  }
+
   detectTurn() {
     const randomPlayer = this.players[
       Math.floor(Math.random() * this.players.length)
     ];
+
+
 
     for (const panel of document.querySelectorAll(".panel")) {
       panel.classList.remove("active")
     }
 
     document
-      .querySelector(`aside#player${randomPlayer.id}`)
+      .querySelector(`#player${randomPlayer.id}`)
       .classList.add("active");
 
     return randomPlayer;

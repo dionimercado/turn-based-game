@@ -1,4 +1,4 @@
-import { player1, player2, weapons } from "./assets";
+import { weapons } from "./assets";
 
 export default class Player {
   constructor(name, avatar, lastId = 0) {

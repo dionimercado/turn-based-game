@@ -134,7 +134,17 @@ aside .box h4 {
   background: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #map > div:hover {
   background: rgba(0, 0, 0, 0.2);
 }
+
+#map > div > img {
+  width: 80%;
+  height: 80%;
+}
+
+
