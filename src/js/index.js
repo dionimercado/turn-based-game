@@ -18,4 +18,5 @@ newGame.addEventListener("click", () => {
   const game = new Game([playerOne, playerTwo]);
 
   game.newGame()
+  // document.querySelector(`#player${game.currentPlayer.id}`).addEventListener('mouseover', game.movesHihglights)
 });
