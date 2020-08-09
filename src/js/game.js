@@ -167,10 +167,11 @@ export default class Game {
     e.target.innerHTML = this.currentPlayer.avatar;
     this.players[this.currentPlayer.id - 1].location = { row, col };
 
-    for (const elm of document.querySelectorAll('.highlight')) {
+    for (const elm of document.querySelectorAll('#map > div')) {
+      // elm.removeEventListener('click', this.movePlayer);
       elm.classList.remove('highlight');
-      elm.removeEventListener('click', this.movePlayer)
     }
+    $("#map > div").off("click")
 
     this.changeTurn()
   }
