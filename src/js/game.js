@@ -29,14 +29,18 @@ export default class Game {
     this.reset();
 
     this.currentPlayer = this.detectTurn();
+
     for (let i = 0; i < 15; i++) {
       this.placeItem(`<img src="${obstacle}" alt="" />`, 'obstacle');
     }
+
     weapons.map((weapon, i) => this.placeItem(`<img src="${weapon}" alt="" data-damage="${i > 1 ? i * 10 : 10}" />`, 'weapon'));
-    this.players.map(({ avatar }) => this.placeItem(avatar, 'player'))
-    console.log('obstacles:', document.querySelectorAll('.obstacle').length)
-    console.log('players:', document.querySelectorAll('.player').length)
-    console.log('weapons:', document.querySelectorAll('.weapon').length)
+
+    this.players.map((player) => this.placeItem(player, 'player'))
+
+    // console.log('obstacles:', document.querySelectorAll('.obstacle').length)
+    // console.log('players:', document.querySelectorAll('.player').length)
+    // console.log('weapons:', document.querySelectorAll('.weapon').length)
   }
 
   reset() {
@@ -73,15 +77,30 @@ export default class Game {
   placeItem = (item, type) => {
     const randomSquare = Math.floor(Math.random() * this.gridSquares.length);
     const { row, col } = this.gridSquares[randomSquare].dataset
-    const cList = this.gridSquares[randomSquare].classList
+
+    const cList = this.gridSquares[randomSquare].classList;
+
+
+
     if (!cList.contains('player') && !cList.contains('obstacle') && !cList.contains('weapon')) {
-      this.gridSquares[randomSquare].innerHTML = item;
-      this.gridSquares[randomSquare].classList.add(type);
+
+      if (type === 'player') {
+        this.players[item.id - 1].location = { row, col };
+        this.gridSquares[randomSquare].innerHTML = item.avatar;
+        this.gridSquares[randomSquare].classList.add(type);
+      } else {
+        this.gridSquares[randomSquare].innerHTML = item;
+        this.gridSquares[randomSquare].classList.add(type);
+      }
+
+
     } else {
       this.placeItem(item, type)
     }
 
+  }
 
+  movesHihglights = () => {
 
   }
 
